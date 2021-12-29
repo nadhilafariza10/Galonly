@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username, password;
+    EditText email, password;
     Button login;
     TextView register;
     ProgressDialog progressDialog;
@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username = (EditText) findViewById(R.id.userNameEditText);
+        email = (EditText) findViewById(R.id.emailEditText);
         password = (EditText) findViewById(R.id.passwordEditText);
         login = (Button) findViewById(R.id.loginButton);
         register = (TextView) findViewById(R.id.lupa);
@@ -55,17 +55,19 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sUsername = username.getText().toString();
+                Intent login = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(login);
+                String sEmail = email.getText().toString();
                 String sPassword = password.getText().toString();
 
-                CheckLogin(sUsername, sPassword);
+                CheckLogin(sEmail, sPassword);
             }
         }));
 
 
         }
 
-        public void CheckLogin(final String username, final String password){
+        public void CheckLogin(final String email, final String password){
 
         if (checkNetworkConnection()) {
             progressDialog.show();
@@ -98,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError{
                     Map<String, String> params = new HashMap<>();
-                    params.put("username", username);
+                    params.put("email", email);
                     params.put("password", password);
                     return params;
                 }

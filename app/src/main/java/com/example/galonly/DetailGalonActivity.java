@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.galonly.Model.Galon;
 
 public class DetailGalonActivity extends AppCompatActivity {
 
@@ -45,10 +46,10 @@ public class DetailGalonActivity extends AppCompatActivity {
         Galon club = getIntent().getParcelableExtra(ITEM_EXTRA);
         if (club != null) {
             Glide.with(this)
-                    .load(club.getPhoto())
+                    .load(club.getImage())
                     .into(imgGalon);
-            tvGalonName.setText(club.getName());
-            tvGalonDetail.setText(club.getDetail());
+            tvGalonName.setText(club.getNama_galon());
+            tvGalonDetail.setText(club.getAlamat_galon());
         }
 
         if (getSupportActionBar() != null) {

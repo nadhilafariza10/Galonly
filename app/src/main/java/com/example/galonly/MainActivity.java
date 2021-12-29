@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText username, password, confPassword;
+    EditText name, email, password, confPassword;
     Button register;
     TextView login;
     ProgressDialog progressDialog;
@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText) findViewById(R.id.edit_usernameRegister);
+        name = (EditText) findViewById(R.id.edit_nameRegister);
+        email = (EditText) findViewById(R.id.edit_emailRegister);
         password = (EditText) findViewById(R.id.edit_passwordRegister);
         confPassword = (EditText) findViewById(R.id.edit_confPasswordRegister);
         login = (TextView) findViewById(R.id.btn_loginRegister);
@@ -56,12 +57,13 @@ public class MainActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sUsername = username.getText().toString();
+                String sName = name.getText().toString();
+                String sEmail = email.getText().toString();
                 String sPassword = password.getText().toString();
                 String sConfPassword = confPassword.getText().toString();
 
                 if (sPassword.equals(sConfPassword) && !sPassword.equals("")) {
-                    CreateDataToServer(sUsername, sPassword);
+                    CreateDataToServer(sName,sEmail, sPassword);
                     Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(loginIntent);
                 } else {
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void CreateDataToServer(final String username, final String password) {
+    public void CreateDataToServer(String name, final String email, final String password) {
         if (checkNetworkConnection()){
             progressDialog.show();
             StringRequest stringRequest = new StringRequest(Request.Method.POST, DbContract.SERVER_REGISTER_URL,
@@ -100,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
-                    params.put("username", username);
+                    params.put("name", name);
+                    params.put("email", email);
                     params.put("password", password);
                     return params;
                 }

@@ -1,5 +1,7 @@
 package com.example.galonly;
 
+import com.example.galonly.Model.Galon;
+
 import java.util.ArrayList;
 
 public class GalonData {
@@ -30,17 +32,17 @@ public class GalonData {
 
     };
 
-    private static int[] clubPhoto = {
-            R.drawable.galon1,
-            R.drawable.galon2,
-            R.drawable.galon3,
-            R.drawable.galon4,
-            R.drawable.galon3,
-            R.drawable.galon1,
-            R.drawable.galon2,
-            R.drawable.galon4,
-            R.drawable.galon3,
-            R.drawable.galon1
+    private static String[] clubPhoto = {
+            "R.drawable.galon1",
+            "R.drawable.galon2",
+            "R.drawable.galon3",
+            "R.drawable.galon4",
+            "R.drawable.galon3",
+           "R.drawable.galon1",
+            "R.drawable.galon2",
+            "R.drawable.galon4",
+            "R.drawable.galon3",
+            "R.drawable.galon1"
     };
 
     private static String [] clubbukaTutup = {
@@ -63,9 +65,9 @@ public class GalonData {
         ArrayList<Galon> list = new ArrayList<>();
         for (int position = 0;position <clubName.length;position++){
             Galon galon = new Galon();
-            galon.setName(clubName[position]);
-            galon.setDetail(clubDetail[position]);
-            galon.setPhoto(clubPhoto[position]);
+            galon.setNama_galon(clubName[position]);
+            galon.setAlamat_galon(clubDetail[position]);
+            galon.setImage(clubPhoto[position]);
             list.add(galon);
         }
         return list;
