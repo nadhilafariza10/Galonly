@@ -66,7 +66,7 @@ public class ListGalonActivity extends AppCompatActivity {
                         map.put("telepon", json.getString("telepon"));
                         map.put("image", json.getString("image"));
                         list_data.add(map);
-                        ListGalonAdapter adapter = new ListGalonAdapter(ListGalonActivity.this, list_data);
+                        ListGalonAdapter adapter = new ListGalonAdapter(ListGalonActivity.this, HomeActivity.class
                         rvGalon.setAdapter(adapter);
 
                     }
